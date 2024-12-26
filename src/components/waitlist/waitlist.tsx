@@ -51,6 +51,7 @@ const Waitlist = () => {
       if (result.result === "success") {
         setMessage("Successfully subscribed!");
         setStatus("success");
+        console.log(status);
         setEmail("");
       } else {
         setMessage(result.error || "Something went wrong. Please try again.");
@@ -60,13 +61,11 @@ const Waitlist = () => {
       console.error("Error submitting email:", error);
       setMessage("Error submitting email. Please try again.");
       setStatus("error");
-    } finally {
-      setStatus("idle");
     }
   };
 
   return (
-    <main className="flex flex-col gap-4 row-start-2 items-center sm:items-start">
+    <main className="flex flex-col gap-4 row-start-2 items-center sm:items-start ">
       <div>
         <HyperText>Veloentra coming soon!</HyperText>
       </div>
@@ -94,7 +93,6 @@ const Waitlist = () => {
             {status === "loading" ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Subscribing
               </>
             ) : (
               "Subscribe"
